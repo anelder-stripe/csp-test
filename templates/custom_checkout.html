@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
+    <script src="https://checkout.stripe.com/checkout.js"></script>
+    <script>
+      document.addEventListener("DOMContentLoaded", function(event) {
+
+        var handler = StripeCheckout.configure({
+          key: 'pk_test_TYooMQauvdEDq54NiTphI7jx',
+          image: 'https://stripe.com/img/documentation/checkout/marketplace.png',
+          locale: 'auto',
+          token: function(token) {
+            alert(token);
+          }
+        });
+
+        document.getElementById('customButton').addEventListener('click', function(e) {
+          // Open Checkout with further options:
+          handler.open({
+            name: 'Stripe.com',
+            description: '2 widgets',
+            zipCode: true,
+            amount: 2000
+          });
+          e.preventDefault();
+        });
+
+        // Close Checkout on page navigation:
+        window.addEventListener('popstate', function() {
+          handler.close();
+        });
+
+      });
+    </script>
+  </head>
+  <body>
+    <button id="customButton">Purchase</button>
+  </body>
+</html>

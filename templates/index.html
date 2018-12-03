@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
+  </head>
+  <body>
+    <a href="{{ url_for('simple_checkout') }}">Simple Checkout w/ CSP</a><br />
+    <a href="{{ url_for('custom_checkout') }}">Custom Checkout w/ CSP</a><br />
+    <a href="{{ url_for('stripe_js_v3') }}">Stripe.js/v3 and Elements w/ CSP</a><br />
+  </body>
+</html>
